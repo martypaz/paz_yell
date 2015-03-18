@@ -24,3 +24,11 @@
 // is that your final data is written to an Sqlite database called data.sqlite in the current working directory which
 // has at least a table called data.
 ?>
+require 'scraperwiki.php';
+require 'scraperwiki/simple_html_dom.php';
+$html = scraperwiki::scrape("http://www.yellowpages.com.au/find/car-radios-and-stereos/2137");
+
+$dom = new simple_html_dom();
+$dom->load($html);
+
+print_r($dom->find(".listing"));
